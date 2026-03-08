@@ -4,6 +4,10 @@ Library    FakerLibrary
 
 Resource    global_variables.resource
 
+# === LOCATORS ===
+Resource    resources/locators/main_page_locators.resource
+Resource    resources/locators/register_page_locators.resource
+
 ***Keywords***
 
 # === WAIT KEYWORDS ===
