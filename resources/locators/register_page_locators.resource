@@ -11,3 +11,6 @@ ${REGISTER_PAGE_GDPR_CHECKBOX}                     css=label:has-text("I agree t
 ${REGISTER_PAGE_NEWSLETTER_CHECKBOX}               [name="newsletter"]
 ${REGISTER_PAGE_CUSTOMER_PRIVACY_CHECKBOX}         [name="customer_privacy"]
 ${REGISTER_PAGE_SAVE_BUTTON}                       [data-link-action="save-customer"]
+
+@{REGISTER_PAGE_BOTH_GENDER_CHECKBOXES_FOR_RANDOM_CHOICE}    
+...    ${REGISTER_PAGE_PAN_CHECKBOX}    ${REGISTER_PAGE_PANI_CHECKBOX}

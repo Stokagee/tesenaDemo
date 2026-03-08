@@ -1,2 +1,9 @@
 .vscode/
 .claude/
+tests/playwright-log.txt
+results/
+tests/browser/screenshot/robotframework-browser-screenshot-1.png
+tests/browser/screenshot/fail-screenshot-1.png
+tests/report.html
+tests/output.xml
+tests/log.html

@@ -1,12 +1,20 @@
+*** Comments ***
+Zde je soubour který zastřešuje jako deštník celý projekt. Obsahuje obecné keywords pro práci s prohlížečem, 
+...    které jsou využívány napříč všemi stránkami.
+
 *** Settings ***
 Library    Browser
 Library    FakerLibrary
+Library    DateTime
 
 Resource    global_variables.resource
 
 # === LOCATORS ===
 Resource    resources/locators/main_page_locators.resource
 Resource    resources/locators/register_page_locators.resource
+Resource    resources/page/main_page_page.resource
+Resource    resources/page/register_page_page.resource
+Resource    resources/workflow/register_workflow.resource
 
 ***Keywords***
 
@@ -25,7 +33,7 @@ Wait Element Ready
 
 Initialize Browser Session
     [Documentation]    Otevře se nové okno a načte se zadaná URL adresa.
-    New Browser    headless=False    browser=chromium
+    New Browser    headless=True    browser=chromium
     New Context
     New Page    url=${TEST_URL}    wait_until=networkidle    
     Set Viewport Size    width=1280    height=800
@@ -42,7 +50,7 @@ Click Element
         Click    ${selector}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Failed when, '${context_name}' --> | selector='${selector}' | ERROR: ${err}
+        VAR    ${msg}    Nepodařilo se kliknout na prvek, '${context_name}' --> | selector='${selector}' | ERROR: ${err}
         Fail    ${msg}
     END
 
@@ -56,7 +64,7 @@ Fill Field
         Fill Text    ${locator}    ${text}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Failed when, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        VAR    ${msg}    Nepodařilo se vyplnit pole, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
         Fail    ${msg}
     END
 
@@ -69,25 +77,22 @@ Get Element Text
         ${text}=    browser.Get Text    ${locator}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Failed when, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        VAR    ${msg}    Nepodařilo se získat text elementu, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
         Fail    ${msg}
     END
     RETURN    ${text}
 
-Select Random Dropdown Option
-    [Documentation]    Opens dropdown and randomly selects a car type
+Click On Checkbox
+    [Documentation]    Checks the checkbox element using the specified locator with optional context name for better error messages
     [Arguments]    ${locator}    ${context_name}=${EMPTY}
     TRY
         Wait Element Ready    ${locator}
-        ${options}=    Get Select Options    ${locator}
-        @{labels}=    Evaluate    [o['label'] for o in ${options}]
-        ${choice}=    Evaluate    random.choice(${labels})    modules=random
-        Log    Selected: ${choice}    console=${LOG_TO_CONSOLE}
-        Select Options By    ${locator}    text    ${choice}
+        Check Checkbox   ${locator}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Failed when, '${context_name}'  --> | locator='${locator}' | ERROR: ${err}
-    END
+        VAR    ${msg}    Nepodařilo se zaškrtnout checkbox, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        Fail    ${msg}
+    END    
 
 # === LOGGING KEYWORDS ===
 
