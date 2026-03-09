@@ -21,9 +21,9 @@ Najede Myší Na Clothes v menu & Vybere Ženu & Přidá Produkt Do košíku
     Přidat Produkt Do Košíku
     Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
     ${item_prices}    ${total_sum}    Get Cart Item Prices And Sum
-    Log To Console    \n===> Ceny položek v košíku: ${item_prices} a celková cena: ${total_sum}
+    Log Action    Získal jsem ceny položek v košíku: ${item_prices} a jejich součet: ${total_sum}. Nyní ověřuji, že tento součet odpovídá zobrazenému mezisoučtu produktů v košíku pro ověření správného výpočtu celkové ceny.
     ${subtotal_price}=    Get Cart Subtotal Products
-    Log To Console    \n===> Mezisoučet produktů v košíku: ${subtotal_price}
+    Log Action    Ověřuji, že součet cen položek v košíku (${total_sum}) odpovídá zobrazenému mezisoučtu produktů (${subtotal_price}) pro ověření správného výpočtu celkové ceny v košíku.
     Should Be Equal As Numbers    ${total_sum}    ${subtotal_price}    msg=Ověření správného výpočtu celkové ceny v košíku selhalo. Očekávaná cena: ${subtotal_price}, Získaná cena: ${total_sum}
     Klikne Na Pokračovat Do Poklady V Košíku
     Vyplní Údaje Pro Objednávku
