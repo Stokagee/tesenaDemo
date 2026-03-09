@@ -22,21 +22,50 @@ Najede Myší Na Clothes v menu & Vybere Ženu & Přidá Produkt Do košíku
     Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
     Klikne Na Pokračovat Do Poklady V Košíku
     Vyplní Údaje Pro Objednávku
+    Vyplní Formulář Adresy v košíku
+    Vybere Možnost Zvolit Mého Dopravce
+    Klikne Na Pokračovat Po Vybrání Dopravce v Košíku
+    Ověření Zvoleného Dopravce a Přechod Na stránku S Výběrem Platby v Košíku
 
 
 Vyplní Údaje Pro Objednávku
     [Documentation]    Vyplní všechny potřebné údaje pro objednávku, včetně jména, příjmení, emailu, telefonního čísla, adresy a dalších informací potřebných pro dokončení nákupu.
     Vybere náhodný gender chekckbox
-    ${křestní_pro_ověření}=    Vyplní Křestní Jméno
-    ${příjmení_pro_ověření}=    Vyplní Příjmení
+    ${křestní_pro_ověření}=    Vyplní Jméno v Košíku
+    ${příjmení_pro_ověření}=    Vyplní Příjmení v Košíku
     ${email_pro_ověření}=    Vyplní Email v Košíku
     ${heslo_pro_ověření}=    Vyplní Heslo v Košíku
-    ${datum_narození_pro_ověření}=    Vyplní Datum Narození
-    Zaškrtne Opt-in pro speciální nabídky
-    Zaškrtne GDPR souhlas
-    Zaškrtne Customer Privacy
-    Zaškrtne Newsletter
+    ${datum_narození_pro_ověření}=    Vyplní Datum Narození v Košíku
+    Zaškrtne Opt-in pro speciální nabídky v Košíku
+    Zaškrtne GDPR souhlas v Košíku
+    Zaškrtne Customer Privacy v Košíku
+    Zaškrtne Newsletter v Košíku
     Klikne Na Pokračovat Po Vyplnění Formuláře V Košíku
+
+
+Vyplní Formulář Adresy v košíku
+    [Documentation]    Vyplní všechny potřebné údaje pro adresu v košíku, včetně ulice, města, PSČ a dalších informací potřebných pro dokončení nákupu.
+    Vyplní Alias v Košíku
+    Vyplní Společnost v Košíku
+    Vyplní DIČ v Košíku
+    Vyplní Adresu v Košíku
+    Vyplní Doplněk Adresy v Košíku
+    Vyplní PSČ v Košíku
+    Vyplní Město v Košíku
+    Vyplní Telefon v Košíku
+    Klikne Na Pokračovat Po Vyplnění Adressy V Košíku
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
     Sleep    3

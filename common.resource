@@ -6,6 +6,7 @@ Zde je soubour který zastřešuje jako deštník celý projekt. Obsahuje obecn�
 Library    Browser
 Library    FakerLibrary
 Library    DateTime
+Library    Collections
 
 Resource    global_variables.resource
 
@@ -124,6 +125,35 @@ Najetí Myši Na Element
         Fail    ${msg}
     END
 
+Select Random Dropdown Value
+    [Documentation]    Selects a random item from a dropdown and returns it.
+    ...                Parameter skip_first=True skips the first item (useful where first is default/placeholder)
+    ...                Parameter attribute determines selection criteria: text (default), value, index, label
+    ...                Usage: ${selected}=    Select Random Dropdown Value    ${locator}
+    [Arguments]    ${locator}    ${attribute}    ${skip_first}    ${context_name}=${EMPTY}
+    TRY
+        Wait Element Ready    ${locator}
+
+        # Get all options from dropdown
+          ${options}=    Get Select Options    ${locator}
+          @{values}=    Evaluate    [o['${attribute}'] for o in ${options}]
+
+        # Random selection with option to skip first
+        ${start_index}=    Set Variable If    ${skip_first}    1    0
+        ${length}=    Get Length    ${values}
+        ${random_index}=    Evaluate    random.randint(${start_index}, ${length} - 1)    modules=random
+        ${selected_value}=    Get From List    ${values}    ${random_index}
+
+        # Perform selection
+        Select Options By    ${locator}    ${attribute}    ${selected_value}
+        Log    Selected: ${selected_value}    console=${LOG_TO_CONSOLE}
+    EXCEPT    AS    ${err}
+        Take Screenshot
+        VAR    ${msg}    Failed when '${context_name}' --> | locator='${locator}' | attribute='${attribute}' | ERROR: ${err}
+        Fail    ${msg}
+    END
+    RETURN    ${selected_value}
+
 # === LOGGING KEYWORDS ===
 
 Log Action
@@ -148,3 +178,4 @@ Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
     [Documentation]    Klikne na tlačítko "Přejít do košíku" v modal okně, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro toto tlačítko.
     Log Action    Klikám na tlačítko "Přejít do košíku" v modal okně po přidání produktu do košíku.
     Click Element    ${GLOBAL_MODAL_GO_TO_CART_BUTTON}    Go To Cart Button
+
