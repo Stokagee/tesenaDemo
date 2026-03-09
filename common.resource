@@ -20,7 +20,15 @@ Resource    resources/locators/main_clothes_menu/clothes_men_locators.resource
 Resource    resources/workflow/main_workflow.resource
 Resource    resources/page/clothes_menu/women.resource
 Resource    resources/page/clothes_menu/men.resource
-Resource    resources/workflow/clothes_workflow.resource
+Resource    resources/workflow/checkout_workflow.resource
+Resource    resources/locators/main_prislusenstvi_menu/prislusentsvi_stationery_locators.resource
+Resource    resources/locators/main_prislusenstvi_menu/prislusentsvi_home_accessories_locators.resource
+Resource    resources/page/prislusenstvi_menu/home_accessories_page.resource
+Resource    resources/page/prislusenstvi_menu/stationery_page.resource
+
+
+
+
 
 ***Keywords***
 
@@ -126,3 +134,8 @@ Přidat Produkt Do Košíku
     [Documentation]    Přidá produkt do košíku pomocí globálního lokátoru pro tlačítko "Přidat do košíku".
     Log Action    Klikám na tlačítko "Přidat do košíku" pro produkt.
     Click Element    ${GLOBAL_ADD_TO_CART_BUTTON}    Add To Cart Button
+
+Zavřít Modal Okno Po Přidání Do Košíku
+    [Documentation]    Zavře modal okno, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro tlačítko zavření.
+    Log Action    Zavírám modal okno po přidání produktu do košíku.
+    Click Element    ${GLOBAL_CLOSE_MODAL_BUTTON}    Close Modal Button

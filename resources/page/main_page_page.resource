@@ -29,3 +29,13 @@ Klikne Na Clothes Pro Ženy V Menu
     Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}    Ověření, že se zobrazila kategorie oblečení pro ženy, tím že zkontroluje přítomnost specifického produktu v této kategorii.
     Click Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}    kliknutí na kategorii oblečení pro ženy
 
+Najede Myší Na Příslušenství v menu
+    [Documentation]    Najede myší na položku "Příslušenství" v hlavním menu pro zobrazení podmenu s možností výběru pro stacionerie a domácí příslušenství.
+    Log Action    Najíždím myší na položku "Příslušenství" v hlavním menu.
+    Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_DROPDOWN}    Příslušenství Dropdown Menu
+
+Klikne Na Příslušenství Pro Stacionerie V Menu
+    [Documentation]    Klikne na položku "Stacionerie" v podmenu "Příslušenství" pro zobrazení kategorie stacionerie.
+    Log Action    Klikám na položku "Stacionerie" v podmenu "Příslušenství".
+    Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    Ověření, že se zobrazila kategorie stacionerie, tím že zkontroluje přítomnost specifického produktu v této kategorii.
+    Click Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    kliknutí na kategorii stacionerie    
