@@ -15,5 +15,13 @@ Najede Myší Na Clothes v menu & Vybere Ženu & Přidá Produkt Do košíku
     Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
     Přidat Produkt Do Košíku
     Zavřít Modal Okno Po Přidání Do Košíku
+    Klikne Na Art V Menu
+    Vybere První Produkt v ART Kategorii
+    Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
+    Přidat Produkt Do Košíku
+    Zavřít Modal Okno Po Přidání Do Košíku
+
+
+
 
     Sleep    3

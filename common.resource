@@ -25,10 +25,10 @@ Resource    resources/locators/main_prislusenstvi_menu/prislusentsvi_stationery_
 Resource    resources/locators/main_prislusenstvi_menu/prislusentsvi_home_accessories_locators.resource
 Resource    resources/page/prislusenstvi_menu/home_accessories_page.resource
 Resource    resources/page/prislusenstvi_menu/stationery_page.resource
-
-
-
-
+Resource    resources/locators/main_clothes_menu/clothes_page_locators.resource
+Resource    resources/locators/main_prislusenstvi_menu/prislusenstvi_locators.resource
+Resource    resources/locators/art_page_locators.resource
+Resource    resources/page/art_page_page.resource
 
 ***Keywords***
 

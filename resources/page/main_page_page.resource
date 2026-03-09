@@ -39,3 +39,8 @@ Klikne Na Příslušenství Pro Stacionerie V Menu
     Log Action    Klikám na položku "Stacionerie" v podmenu "Příslušenství".
     Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    Ověření, že se zobrazila kategorie stacionerie, tím že zkontroluje přítomnost specifického produktu v této kategorii.
     Click Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    kliknutí na kategorii stacionerie    
+
+Klikne Na Art V Menu
+    [Documentation]    Klikne na položku "Art" v hlavním menu pro zobrazení kategorie umění.
+    Log Action    Klikám na položku "Art" v hlavním menu.
+    Click Element    ${MAIN_PAGE_MENU_BAR_ART_BUTTON}    kliknutí na kategorii umění

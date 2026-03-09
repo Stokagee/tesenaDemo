@@ -11,5 +11,6 @@ ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}                      xpath=//a[co
 ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_DROPDOWN}                       css=a.dropdown-item[href*="6-accessories"]
 ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}             css=a.dropdown-item.dropdown-submenu[href*="7-stationery"]
 ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_HOME_ACCESSORIES_BUTTON}        css=a.dropdown-item.dropdown-submenu[href*="8-home-accessories"]
+${MAIN_PAGE_MENU_BAR_ART_BUTTON}                                    css=li#category-9 > a.dropdown-item[href*="9-art"]
 
 
