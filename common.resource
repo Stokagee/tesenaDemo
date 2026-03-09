@@ -29,6 +29,10 @@ Resource    resources/locators/main_clothes_menu/clothes_page_locators.resource
 Resource    resources/locators/main_prislusenstvi_menu/prislusenstvi_locators.resource
 Resource    resources/locators/art_page_locators.resource
 Resource    resources/page/art_page_page.resource
+Resource    resources/locators/shopping_cart_locators.resource
+Resource    resources/page/shopping_cart_page.resource
+
+
 
 ***Keywords***
 
@@ -139,3 +143,8 @@ Zavřít Modal Okno Po Přidání Do Košíku
     [Documentation]    Zavře modal okno, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro tlačítko zavření.
     Log Action    Zavírám modal okno po přidání produktu do košíku.
     Click Element    ${GLOBAL_CLOSE_MODAL_BUTTON}    Close Modal Button
+
+Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
+    [Documentation]    Klikne na tlačítko "Přejít do košíku" v modal okně, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro toto tlačítko.
+    Log Action    Klikám na tlačítko "Přejít do košíku" v modal okně po přidání produktu do košíku.
+    Click Element    ${GLOBAL_MODAL_GO_TO_CART_BUTTON}    Go To Cart Button
