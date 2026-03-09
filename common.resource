@@ -7,6 +7,7 @@ Library    Browser
 Library    FakerLibrary
 Library    DateTime
 Library    Collections
+Library    String
 
 Resource    global_variables.resource
 

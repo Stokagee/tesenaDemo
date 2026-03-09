@@ -1,6 +1,8 @@
 *** Variables ***
 ${SHOPPING_CART_GO_TO_CHECKOUT_BUTTON}                    css=a.btn.btn-primary[href*="objednavka"]
 ${SHOPPING_CART_FORM_CONTINUE_BUTTON}                     css=button.continue[data-link-action="register-new-customer"]
+${SHOPPING_CART_ITEM_PRICE_VIEWFIELD}                     css=li.cart-item strong
+${SHOPPING_CART_TOTAL_SUM_VIEWFIELD}                      css=#cart-subtotal-products .value
 
 # === First Form Fields  ===
 
@@ -24,3 +26,4 @@ ${SHOPPING_CART_ADDRESSES_FORM_CONTINUE_BUTTON}               [name="confirm-add
 
 ${SHOPPING_CART_DELIVERY_OPTION_MY_CARRIER_CHECKBOX}          css=label[for="delivery_option_2"]
 ${SHOPPING_CART_DELIVERY_OPTION_FORM_CONTINUE_BUTTON}         [name="confirmDeliveryOption"]
+

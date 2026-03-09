@@ -5,21 +5,26 @@ Resource    ../common.resource
 Najede Myší Na Clothes v menu & Vybere Ženu & Přidá Produkt Do košíku
     [Documentation]    Najede myší na položku "Clothes" v hlavním menu, vybere kategorii 
     ...    pro ženy a přidá první produkt do košíku.
-    #Najede Myší Na Clothes v menu & Vybere Ženu
-    #Výběr První Položky V Kategorii Pro Ženy
-    #Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
-    #Přidat Produkt Do Košíku
-    #Zavřít Modal Okno Po Přidání Do Košíku
-    #Najede Myší Na Příslušenství v menu & Vybere Stacionerie
-    #Vybere První Notebook V Kategorii Stacionerie
-    #Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
-    #Přidat Produkt Do Košíku
-    #Zavřít Modal Okno Po Přidání Do Košíku
+    Najede Myší Na Clothes v menu & Vybere Ženu
+    Výběr První Položky V Kategorii Pro Ženy
+    Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
+    Přidat Produkt Do Košíku
+    Zavřít Modal Okno Po Přidání Do Košíku
+    Najede Myší Na Příslušenství v menu & Vybere Stacionerie
+    Vybere První Notebook V Kategorii Stacionerie
+    Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
+    Přidat Produkt Do Košíku
+    Zavřít Modal Okno Po Přidání Do Košíku
     Klikne Na Art V Menu
     Vybere První Produkt v ART Kategorii
     Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
     Přidat Produkt Do Košíku
     Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
+    ${item_prices}    ${total_sum}    Get Cart Item Prices And Sum
+    Log To Console    \n===> Ceny položek v košíku: ${item_prices} a celková cena: ${total_sum}
+    ${subtotal_price}=    Get Cart Subtotal Products
+    Log To Console    \n===> Mezisoučet produktů v košíku: ${subtotal_price}
+    Should Be Equal As Numbers    ${total_sum}    ${subtotal_price}    msg=Ověření správného výpočtu celkové ceny v košíku selhalo. Očekávaná cena: ${subtotal_price}, Získaná cena: ${total_sum}
     Klikne Na Pokračovat Do Poklady V Košíku
     Vyplní Údaje Pro Objednávku
     Vyplní Formulář Adresy v košíku
