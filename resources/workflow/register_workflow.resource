@@ -6,7 +6,7 @@ Resource    ../common.resource
 *** Keywords ***
 Registrace Nového Uživatele
     [Documentation]    Kompletní workflow pro registraci nového uživatele, které zahrnuje všechny kroky 
-    ...    od výběru genderu až po odeslání registračního formuláře.
+    ...    od výběru genderu, vyplnění jména, adresy až po odeslání registračního formuláře.
     Klikne Na regiter tlacitko
     Vybere náhodný gender chekckbox
     ${křestní_pro_ověření}=    Vyplní Křestní Jméno
