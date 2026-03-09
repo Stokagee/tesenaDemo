@@ -6,6 +6,8 @@ Zde je soubour který zastřešuje jako deštník celý projekt. Obsahuje obecn�
 Library    Browser
 Library    FakerLibrary
 Library    DateTime
+Library    Collections
+Library    String
 
 Resource    global_variables.resource
 
@@ -15,6 +17,24 @@ Resource    resources/locators/register_page_locators.resource
 Resource    resources/page/main_page_page.resource
 Resource    resources/page/register_page_page.resource
 Resource    resources/workflow/register_workflow.resource
+Resource    resources/locators/main_clothes_menu/clothes_women_locators.resource
+Resource    resources/locators/main_clothes_menu/clothes_men_locators.resource
+Resource    resources/workflow/main_workflow.resource
+Resource    resources/page/clothes_menu/women.resource
+Resource    resources/page/clothes_menu/men.resource
+Resource    resources/workflow/checkout_workflow.resource
+Resource    resources/locators/main_prislusenstvi_menu/prislusentsvi_stationery_locators.resource
+Resource    resources/locators/main_prislusenstvi_menu/prislusentsvi_home_accessories_locators.resource
+Resource    resources/page/prislusenstvi_menu/home_accessories_page.resource
+Resource    resources/page/prislusenstvi_menu/stationery_page.resource
+Resource    resources/locators/main_clothes_menu/clothes_page_locators.resource
+Resource    resources/locators/main_prislusenstvi_menu/prislusenstvi_locators.resource
+Resource    resources/locators/art_page_locators.resource
+Resource    resources/page/art_page_page.resource
+Resource    resources/locators/shopping_cart_locators.resource
+Resource    resources/page/shopping_cart_page.resource
+
+
 
 ***Keywords***
 
@@ -33,7 +53,7 @@ Wait Element Ready
 
 Initialize Browser Session
     [Documentation]    Otevře se nové okno a načte se zadaná URL adresa.
-    New Browser    headless=True    browser=chromium
+    New Browser    headless=${HEADLESS}   browser=chromium
     New Context
     New Page    url=${TEST_URL}    wait_until=networkidle    
     Set Viewport Size    width=1280    height=800
@@ -94,6 +114,47 @@ Click On Checkbox
         Fail    ${msg}
     END    
 
+Najetí Myši Na Element
+    [Documentation]    Hovers the mouse over the specified element using the given locator with optional context name for better error messages
+    [Arguments]    ${locator}    ${context_name}=${EMPTY}
+    TRY
+        Wait Element Ready    ${locator}
+        Hover   ${locator}
+    EXCEPT    AS    ${err}
+        Take Screenshot
+        VAR    ${msg}    Nepodařilo se najet myší na element, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        Fail    ${msg}
+    END
+
+Select Random Dropdown Value
+    [Documentation]    Selects a random item from a dropdown and returns it.
+    ...                Parameter skip_first=True skips the first item (useful where first is default/placeholder)
+    ...                Parameter attribute determines selection criteria: text (default), value, index, label
+    ...                Usage: ${selected}=    Select Random Dropdown Value    ${locator}
+    [Arguments]    ${locator}    ${attribute}    ${skip_first}    ${context_name}=${EMPTY}
+    TRY
+        Wait Element Ready    ${locator}
+
+        # Get all options from dropdown
+          ${options}=    Get Select Options    ${locator}
+          @{values}=    Evaluate    [o['${attribute}'] for o in ${options}]
+
+        # Random selection with option to skip first
+        ${start_index}=    Set Variable If    ${skip_first}    1    0
+        ${length}=    Get Length    ${values}
+        ${random_index}=    Evaluate    random.randint(${start_index}, ${length} - 1)    modules=random
+        ${selected_value}=    Get From List    ${values}    ${random_index}
+
+        # Perform selection
+        Select Options By    ${locator}    ${attribute}    ${selected_value}
+        Log    Selected: ${selected_value}    console=${LOG_TO_CONSOLE}
+    EXCEPT    AS    ${err}
+        Take Screenshot
+        VAR    ${msg}    Failed when '${context_name}' --> | locator='${locator}' | attribute='${attribute}' | ERROR: ${err}
+        Fail    ${msg}
+    END
+    RETURN    ${selected_value}
+
 # === LOGGING KEYWORDS ===
 
 Log Action
@@ -101,3 +162,21 @@ Log Action
     ...                Use for: button clicks, page navigation, form submissions, etc.
     [Arguments]    ${action_description}
     Log    \n---> ${action_description}    console=${LOG_TO_CONSOLE}
+
+# === Global Keywords ===
+
+Přidat Produkt Do Košíku
+    [Documentation]    Přidá produkt do košíku pomocí globálního lokátoru pro tlačítko "Přidat do košíku".
+    Log Action    Klikám na tlačítko "Přidat do košíku" pro produkt.
+    Click Element    ${GLOBAL_ADD_TO_CART_BUTTON}    Add To Cart Button
+
+Zavřít Modal Okno Po Přidání Do Košíku
+    [Documentation]    Zavře modal okno, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro tlačítko zavření.
+    Log Action    Zavírám modal okno po přidání produktu do košíku.
+    Click Element    ${GLOBAL_CLOSE_MODAL_BUTTON}    Close Modal Button
+
+Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
+    [Documentation]    Klikne na tlačítko "Přejít do košíku" v modal okně, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro toto tlačítko.
+    Log Action    Klikám na tlačítko "Přejít do košíku" v modal okně po přidání produktu do košíku.
+    Click Element    ${GLOBAL_MODAL_GO_TO_CART_BUTTON}    Go To Cart Button
+

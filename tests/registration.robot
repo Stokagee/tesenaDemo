@@ -4,9 +4,10 @@ Documentation    Testovací scénář pro ověření funkčnosti registračního
     ...          vyplnění osobních údajů, a odeslání formuláře.
 Resource    ../common.resource
 
+Test Setup    Initialize Browser Session
+Test Teardown    Close Browser Session
+
 *** Test Cases ***
-Registrace Nového Uživatele
+Registrace Nového Uživatele & Ověření Úspěšné Registrace
     [Documentation]    Testovací případ pro ověření, že nový uživatel může úspěšně projít registračním procesem.
-    [Setup]    Initialize Browser Session
     Registrace Nového Uživatele
-    [Teardown]    Close Browser Session
