@@ -43,8 +43,6 @@ tesenaDemo/
 ├── global_variables.resource    # Global configuration variables
 ├── requirements.txt             # Python dependencies
 ├── README.md                    # This file
-├── CHANGELOG.md                 # Version history
-├── CONTRIBUTING.md              # Contribution guidelines
 ├── resources/
 │   ├── locators/               # Page element selectors
 │   │   ├── main_page_locators.resource
