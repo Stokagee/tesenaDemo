@@ -1,13 +1,13 @@
 *** Settings ***
-Documentation    Testovací scénář pro ověření funkčnosti registračního procesu na e-shopu Tesena.cz. 
-    ...          Tento test zahrnuje kompletní workflow pro registraci nového uživatele, včetně výběru genderu, 
-    ...          vyplnění osobních údajů, a odeslání formuláře.
+Documentation    Test scenario to verify the functionality of the registration process for the Tesena e-shop.
+    ...          This test includes the complete workflow for registering a new user, including gender selection,
+    ...          filling in personal details, and submitting the form.
 Resource    ../common.resource
 
 Test Setup    Initialize Browser Session
 Test Teardown    Close Browser Session
 
 *** Test Cases ***
-Registrace Nového Uživatele & Ověření Úspěšné Registrace
-    [Documentation]    Testovací případ pro ověření, že nový uživatel může úspěšně projít registračním procesem.
-    Registrace Nového Uživatele
+Register New User And Verify Successful Registration
+    [Documentation]    Test case to verify that a new user can successfully complete the registration process.
+    Register New User

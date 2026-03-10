@@ -1,152 +1,158 @@
+*** Comments ***
+This file contains keywords for working with the shopping cart page,
+...    including checkout flow, form filling, and price verification.
+
 *** Settings ***
-Resource    ../common.resource
+Resource    ../../common.resource
 
 *** Keywords ***
 
-Klikne Na Pokračovat Do Poklady V Košíku
-    [Documentation]    Klikne na tlačítko "Pokračovat do pokladny" v košíku, aby se přesměroval na stránku s formulářem pro vyplnění údajů pro objednávku.
-    Log Action    Klikám na tlačítko "Pokračovat do pokladny" v košíku pro přesměrování na stránku s formulářem pro objednávku.
-    Click Element    ${SHOPPING_CART_GO_TO_CHECKOUT_BUTTON}    Pokračovat Do Pokladny V Košíku
+Click Continue To Checkout In Cart
+    [Documentation]    Clicks on the "Proceed to checkout" button in the cart to redirect to the checkout form page.
+    Log Action    Clicking on "Proceed to checkout" button in the cart to redirect to checkout form page.
+    Click Element    ${SHOPPING_CART_GO_TO_CHECKOUT_BUTTON}    Proceed To Checkout In Cart
 
-Klikne Na Pokračovat Po Vyplnění Formuláře V Košíku
-    [Documentation]    Klikne na tlačítko "Pokračovat" v košíku po vyplnění údajů pro objednávku, aby se odeslala objednávka a dokončil nákup.
-    Log Action    Klikám na tlačítko "Pokračovat" v košíku pro odeslání objednávky.
-    Click Element    ${SHOPPING_CART_FORM_CONTINUE_BUTTON}    Pokračovat Po Vyplnění Formuláře V Košíku
+Click Continue After Filling Form In Cart
+    [Documentation]    Clicks on the "Continue" button in the cart after filling in order details to submit the order and complete the purchase.
+    Log Action    Clicking on "Continue" button in the cart to submit the order.
+    Click Element    ${SHOPPING_CART_FORM_CONTINUE_BUTTON}    Continue after Filling Form In Cart
 
-Vyplní Email v Košíku
-    [Documentation]    Vyplní emailovou adresu do příslušného pole v košíku, aby se mohl pokračovat v procesu objednávky.
-    ${email}=     Email
-    Log Action    Vyplňuji emailovou adresu do pole pro email v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_EMAIL_INPUT}    ${email}    Email Input V Košíku
+Fill Email In Cart
+    [Documentation]    Fills the email address into the corresponding field in the cart to continue with the checkout process.
+    ${email}=    Email
+    Log Action    Filling email address into the email field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_EMAIL_INPUT}    ${email}    Email Input In Cart
     RETURN    ${email}
 
-Vyplní Heslo v Košíku
-    [Documentation]    Vyplní heslo do příslušného pole v košíku, aby se mohl pokračovat v procesu objednávky.
-    ${heslo}=     Password
-    Log Action    Vyplňuji heslo do pole pro heslo v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_PASSWORD_INPUT}    ${heslo}    Heslo Input V Košíku
-    RETURN    ${heslo}
+Fill Password In Cart
+    [Documentation]    Fills the password into the corresponding field in the cart to continue with the checkout process.
+    ${password}=    Password
+    Log Action    Filling password into the password field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_PASSWORD_INPUT}    ${password}    Password Input In Cart
+    RETURN    ${password}
 
-Vyplní Jméno v Košíku
-    [Documentation]    Vyplní křestní jméno do příslušného pole v košíku, aby se mohl pokračovat v procesu objednávky.
-    Vyplní Křestní Jméno
-    
-Vyplní Příjmení v Košíku
-    [Documentation]    Vyplní příjmení do příslušného pole v košíku, aby se mohl pokračovat v procesu objednávky.
-    Vyplní Příjmení
+Fill First Name In Cart
+    [Documentation]    Fills the first name into the corresponding field in the cart to continue with the checkout process.
+    Fill First Name
 
-Vyplní Datum Narození v Košíku
-    [Documentation]    Vyplní datum narození do příslušného pole v košíku, aby se mohl pokračovat v procesu objednávky.
-    Vyplní Datum Narození
+Fill Last Name In Cart
+    [Documentation]    Fills the last name into the corresponding field in the cart to continue with the checkout process.
+    Fill Last Name
 
-Zaškrtne Opt-in pro speciální nabídky v Košíku
-    [Documentation]    Zaškrtne opt-in pro speciální nabídky v košíku, aby se mohl pokračovat v procesu objednávky.
-    Zaškrtne Opt-in pro speciální nabídky
+Fill Birth Date In Cart
+    [Documentation]    Fills the birth date into the corresponding field in the cart to continue with the checkout process.
+    Fill Birth Date
 
-Zaškrtne GDPR souhlas v Košíku
-    [Documentation]    Zaškrtne GDPR souhlas v košíku, aby se mohl pokračovat v procesu objednávky.
-    Zaškrtne GDPR souhlas
+Check Opt-in For Special Offers In Cart
+    [Documentation]    Checks the opt-in for special offers in the cart to continue with the checkout process.
+    Check Opt-in For Special Offers
 
-Zaškrtne Customer Privacy v Košíku
-    [Documentation]    Zaškrtne souhlas s ochranou osobních údajů (Customer Privacy) v košíku, aby se mohl pokračovat v procesu objednávky.
-    Zaškrtne Customer Privacy
+Check GDPR Consent In Cart
+    [Documentation]    Checks the GDPR consent in the cart to continue with the checkout process.
+    Check GDPR Consent
 
-Zaškrtne Newsletter v Košíku
-    [Documentation]    Zaškrtne souhlas s odběrem newsletteru v košíku, aby se mohl pokračovat v procesu objednávky.
-    Zaškrtne Newsletter
-Vyplní Alias v Košíku
-    [Documentation]    Vyplní alias pro adresu do příslušného pole v košíku, je to form na adresu.
-    ${alias}=     Street Name
-    Log Action    Vyplňuji alias pro adresu do pole pro alias v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_ALIAS_INPUT}    ${alias}    Alias Input V Košíku
+Check Customer Privacy In Cart
+    [Documentation]    Checks the customer privacy consent in the cart to continue with the checkout process.
+    Check Customer Privacy
+
+Check Newsletter In Cart
+    [Documentation]    Checks the newsletter subscription consent in the cart to continue with the checkout process.
+    Check Newsletter
+
+Fill Alias In Cart
+    [Documentation]    Fills the address alias into the corresponding field in the cart, this is part of the address form.
+    ${alias}=    Street Name
+    Log Action    Filling address alias into the alias field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_ALIAS_INPUT}    ${alias}    Alias Input In Cart
     RETURN    ${alias}
 
-Vyplní Společnost v Košíku
-    [Documentation]    Vyplní název společnosti do příslušného pole v košíku, je to form na adresu.
-    ${company}=     Company
-    Log Action    Vyplňuji název společnosti do pole pro společnost v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_COMPANY_INPUT}    ${company}    Společnost Input V Košíku
+Fill Company In Cart
+    [Documentation]    Fills the company name into the corresponding field in the cart, this is part of the address form.
+    ${company}=    Company
+    Log Action    Filling company name into the company field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_COMPANY_INPUT}    ${company}    Company Input In Cart
     RETURN    ${company}
 
-Vyplní DIČ v Košíku
-    [Documentation]    Vyplní DIČ do příslušného pole v košíku, je to form na adresu.
-    ${number}=     Random Number    digits=8
+Fill VAT Number In Cart
+    [Documentation]    Fills the VAT number into the corresponding field in the cart, this is part of the address form.
+    ${number}=    Random Number    digits=8
     VAR    ${vat_number}    CZ${number}
-    Log Action    Vyplňuji DIČ do pole pro DIČ v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_VAT_NUMBER_INPUT}    ${vat_number}    DIČ Input V Košíku
+    Log Action    Filling VAT number into the VAT field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_VAT_NUMBER_INPUT}    ${vat_number}    VAT Number Input In Cart
     RETURN    ${vat_number}
 
-Vyplní Adresu v Košíku
-    [Documentation]    Vyplní adresu do příslušného pole v košíku, je to form na adresu.
-    ${address}=     Street Address
-    Log Action    Vyplňuji adresu do pole pro adresu v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_ADDRESS1_INPUT}    ${address}    Adresa Input V Košíku
+Fill Address In Cart
+    [Documentation]    Fills the address into the corresponding field in the cart, this is part of the address form.
+    ${address}=    Street Address
+    Log Action    Filling address into the address field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_ADDRESS1_INPUT}    ${address}    Address Input In Cart
     RETURN    ${address}
 
-Vyplní Doplněk Adresy v Košíku
-    [Documentation]    Vyplní doplněk adresy do příslušného pole v košíku, je to form na adresu.
-    ${address2}=     Secondary Address
-    Log Action    Vyplňuji doplněk adresy do pole pro doplněk adresy v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_ADDRESS2_INPUT}    ${address2}    Doplněk Adresy Input V Košíku
+Fill Address Complement In Cart
+    [Documentation]    Fills the address complement into the corresponding field in the cart, this is part of the address form.
+    ${address2}=    Secondary Address
+    Log Action    Filling address complement into the address complement field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_ADDRESS2_INPUT}    ${address2}    Address Complement Input In Cart
     RETURN    ${address2}
 
-Vyplní PSČ v Košíku
+Fill Zip Code In Cart
+    [Documentation]    Fills the postal code into the corresponding field in the cart, this is part of the address form.
     ${postcode}=    Postcode
     ${postcode}=    Evaluate    "${postcode[:3]} ${postcode[3:]}"
-    Fill Field    ${SHOPPING_CART_POSTCODE_INPUT}    ${postcode}    PSČ Input V Košíku
+    Fill Field    ${SHOPPING_CART_POSTCODE_INPUT}    ${postcode}    Postal Code Input In Cart
     RETURN    ${postcode}
 
-Vyplní Město v Košíku
-    [Documentation]    Vyplní město do příslušného pole v košíku, je to form na adresu.
-    ${city}=     City
-    Log Action    Vyplňuji město do pole pro město v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_CITY_INPUT}    ${city}    Město Input V Košíku
-    RETURN   ${city}
+Fill City In Cart
+    [Documentation]    Fills the city into the corresponding field in the cart, this is part of the address form.
+    ${city}=    City
+    Log Action    Filling city into the city field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_CITY_INPUT}    ${city}    City Input In Cart
+    RETURN    ${city}
 
-Vyplní Telefon v Košíku
-    [Documentation]    Vyplní telefonní číslo do příslušného pole v košíku, je to form na adresu.
-    ${phone}=     Random Number    digits=9
-    Log Action    Vyplňuji telefonní číslo do pole pro telefon v košíku pro pokračování v procesu objednávky.
-    Fill Field    ${SHOPPING_CART_PHONE_INPUT}    ${phone}    Telefon Input V Košíku
+Fill Phone In Cart
+    [Documentation]    Fills the phone number into the corresponding field in the cart, this is part of the address form.
+    ${phone}=    Random Number    digits=9
+    Log Action    Filling phone number into the phone field in the cart to continue with checkout process.
+    Fill Field    ${SHOPPING_CART_PHONE_INPUT}    ${phone}    Phone Input In Cart
     RETURN    ${phone}
 
-Vybere Náhodnou Zemi v Košíku
-    [Documentation]    Vybere zemi z dropdownu v košíku, je to form na adresu.
-    Log Action    Vyberu zemi z dropdownu pro zemi v košíku pro pokračování v procesu objednávky.
-    ${selected_value}=    Select Random Dropdown Value    ${SHOPPING_CART_COUNTRY_DROPDOWN}    value    False    Country Dropdown V Košíku
+Select Random Country In Cart
+    [Documentation]    Selects a country from the dropdown in the cart, this is part of the address form.
+    Log Action    Selecting country from the country dropdown in the cart to continue with checkout process.
+    ${selected_value}=    Select Random Dropdown Value    ${SHOPPING_CART_COUNTRY_DROPDOWN}    value    False    Country Dropdown In Cart
     RETURN    ${selected_value}
 
-Klikne Na Pokračovat Po Vyplnění Adressy v Košíku
-    [Documentation]    Klikne na tlačítko "Pokračovat" v košíku po vyplnění údajů pro adresu, aby se mohl pokračovat v procesu objednávky.
-    Log Action    Klikám na tlačítko "Pokračovat" v košíku po vyplnění údajů pro adresy pro pokračování v procesu objednávky.
-    Click Element    ${SHOPPING_CART_ADDRESSES_FORM_CONTINUE_BUTTON}    Pokračovat Po Vyplnění Adresy V Košíku
+Click Continue After Filling Address In Cart
+    [Documentation]    Clicks on the "Continue" button in the cart after filling in address details to continue with the checkout process.
+    Log Action    Clicking on "Continue" button in the cart after filling address details to continue with checkout process.
+    Click Element    ${SHOPPING_CART_ADDRESSES_FORM_CONTINUE_BUTTON}    Continue After Filling Address In Cart
 
-Vybere Možnost Zvolit Mého Dopravce
-    [Documentation]    Vybere možnost "Zvolit mého dopravce" v košíku, aby se mohl pokračovat v procesu objednávky.
-    Log Action    Vyberu možnost "Zvolit mého dopravce" v košíku pro pokračování v procesu objednávky.
-    Click On Checkbox    ${SHOPPING_CART_DELIVERY_OPTION_MY_CARRIER_CHECKBOX}    Zvolit Mého Dopravce V Košíku
+Select Choose My Carrier Option
+    [Documentation]    Selects the "Choose my carrier" option in the cart to continue with the checkout process.
+    Log Action    Selecting "Choose my carrier" option in the cart to continue with checkout process.
+    Click On Checkbox    ${SHOPPING_CART_DELIVERY_OPTION_MY_CARRIER_CHECKBOX}    Choose My Carrier In Cart
 
-Klikne Na Pokračovat Po Vybrání Dopravce v Košíku
-    [Documentation]    Klikne na tlačítko "Pokračovat" v košíku po vybrání dopravce, aby se mohl pokračovat v procesu objednávky.
-    Log Action    Klikám na tlačítko "Pokračovat" v košíku po vybrání dopravce pro pokračování v procesu objednávky.
-    Click Element    ${SHOPPING_CART_DELIVERY_OPTION_FORM_CONTINUE_BUTTON}    Pokračovat Po Vybrání Dopravce V Košíku
+Click Continue To Payment Step
+    [Documentation]    Clicks on the "Continue" button to proceed to the payment step.
+    Log Action    Clicking on "Continue" button to proceed to payment step.
+    Click Element    ${SHOPPING_CART_DELIVERY_OPTION_FORM_CONTINUE_BUTTON}    Continue To Payment Step
 
-Ověření Zvoleného Dopravce a Přechod Na stránku S Výběrem Platby v Košíku
-    [Documentation]    Ověří, že byla zvolena možnost "Zvolit mého dopravce" v košíku, a poté klikne na tlačítko pro pokračování na stránku s výběrem platby.
-    Log Action    Ověřuji, že byla zvolena možnost "Zvolit mého dopravce" v košíku a pokračuji na stránku s výběrem platby.
+Verify Payment Step Is Displayed
+    [Documentation]    Verifies that the payment step is displayed by checking for the payment method message.
+    Log Action    Verifying that payment step is displayed.
     Wait Element Ready    "Bohužel není k dispozici žádná platební metoda."
 
 Get Cart Item Prices And Sum
-    [Documentation]    Vrátí list cen položek v košíku a jejich součet
-    Log Action    Získávám ceny položek v košíku a počítám jejich součet pro ověření správného výpočtu celkové ceny v košíku.
+    [Documentation]    Returns a list of item prices in the cart and their sum.
+    Log Action    Getting item prices in the cart and calculating their sum to verify correct total price calculation in cart.
     ${elements}=    Browser.Get Elements    ${SHOPPING_CART_ITEM_PRICE_VIEWFIELD}
-    Log Action    Získal jsem elementy s cenami položek v košíku, nyní získávám text z těchto elementů pro další zpracování.
+    Log Action    Retrieved elements with item prices in the cart, now getting text from these elements for further processing.
     ${raw_prices}=    Create List
     FOR    ${el}    IN    @{elements}
-        ${txt}=    Browser.Get Text    ${el}
+        ${txt}=    Get Element Text    ${el}    Item price in cart
         Append To List    ${raw_prices}    ${txt}
     END
-    Log Action    Získal jsem surové textové ceny položek v košíku: ${raw_prices}. Nyní je potřeba tyto ceny vyčistit a převést na číselný formát pro výpočet součtu.
+    Log Action    Retrieved raw text prices of items in cart: ${raw_prices}. Now need to clean these prices and convert to numeric format for sum calculation.
     ${clean_prices}=    Create List
     FOR    ${p}    IN    @{raw_prices}
         ${clean}=    Replace String    ${p}    &nbsp;Kč    ${EMPTY}
@@ -155,32 +161,22 @@ Get Cart Item Prices And Sum
         ${clean}=    Replace String    ${clean}    ,    .
         Append To List    ${clean_prices}    ${clean}
     END
-    Log Action    Vyčistil jsem ceny položek v košíku od měnových symbolů, mezer a nahrazení čárky tečkou pro správný formát čísla: ${clean_prices}. Nyní převádím tyto vyčištěné ceny na číselný formát pro výpočet součtu.
+    Log Action    Cleaned item prices in cart from currency symbols, spaces and replaced comma with period for correct number format: ${clean_prices}. Now converting these cleaned prices to numeric format for sum calculation.
     ${numeric_prices}=    Evaluate    [float(x) for x in ${clean_prices}]
-    Log Action    Převádím vyčištěné ceny položek v košíku na číselný formát pro výpočet celkové ceny: ${numeric_prices}. Nyní počítám součet těchto cen pro ověření správného výpočtu celkové ceny v košíku.
+    Log Action    Converting cleaned item prices in cart to numeric format for total price calculation: ${numeric_prices}. Now calculating sum of these prices to verify correct total price calculation in cart.
     ${sum}=    Evaluate    sum(${numeric_prices})
     RETURN    ${numeric_prices}    ${sum}
 
 Get Cart Subtotal Products
-    [Documentation]    Vrátí mezisoučet produktů z košíku jako číslo (float)
-    Log Action    Získávám mezisoučet produktů z košíku pro ověření správného výpočtu celkové ceny v košíku. Nejprve získám surový text mezisoučtu, poté tento text vyčistím od měnových symbolů, mezer a dalších nečíselných znaků, abych mohl převést tento mezisoučet na číslo (float) pro další ověření.
-    ${raw}=    Get Element Text    ${SHOPPING_CART_TOTAL_SUM_VIEWFIELD}    "Mezisoučet produktů v košíku"
-    Log Action    Získal jsem surový text mezisoučtu produktů v košíku: '${raw}'. Nyní potřebuji tento text vyčistit od měnových symbolů, mezer a dalších nečíselných znaků, abych mohl převést tento mezisoučet na číslo pro ověření správného výpočtu celkové ceny v košíku.
+    [Documentation]    Returns the product subtotal from the cart as a number (float).
+    Log Action    Getting product subtotal from the cart to verify correct total price calculation in cart. First getting raw subtotal text, then cleaning it from currency symbols, spaces and other non-numeric characters to convert to float for further verification.
+    ${raw}=    Get Element Text    ${SHOPPING_CART_TOTAL_SUM_VIEWFIELD}    "Product subtotal in cart"
+    Log Action    Retrieved raw text of product subtotal in cart: '${raw}'. Now need to clean this text from currency symbols, spaces and other non-numeric characters to convert to number for verification.
     ${clean}=    Replace String    ${raw}    &nbsp;Kč    ${EMPTY}
     ${clean}=    Replace String    ${clean}    Kč    ${EMPTY}
     ${clean}=    Replace String    ${clean}    ${SPACE}    ${EMPTY}
     ${clean}=    Replace String    ${clean}    ,    .
     ${clean}=    Replace String    ${clean}    \u00A0    ${EMPTY}
-    Log Action    Vyčistil jsem text mezisoučtu produktů v košíku od měnových symbolů, mezer a nahrazení čárky tečkou pro správný formát čísla: '${clean}'. Nyní převádím tento vyčištěný mezisoučet na číslo pro ověření správného výpočtu celkové ceny v košíku.
+    Log Action    Cleaned product subtotal text in cart from currency symbols, spaces and replaced comma with period for correct number format: '${clean}'. Now converting this cleaned subtotal to number for verification.
     ${subtotal}=    Evaluate    float(${clean})
     RETURN    ${subtotal}
-
-
-
-
-
-
-
-
-
-

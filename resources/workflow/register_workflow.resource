@@ -1,22 +1,25 @@
 *** Comments ***
-Tady se keywordy slučují a tvoří se z nich kompletní workflow pro registraci nového uživatele.
+This file combines keywords to create complete workflows for user registration.
+...    It orchestrates the entire registration process from start to finish.
+
 *** Settings ***
-Resource    ../common.resource
+Resource    ../../common.resource
 
 *** Keywords ***
-Registrace Nového Uživatele
-    [Documentation]    Kompletní workflow pro registraci nového uživatele, které zahrnuje všechny kroky 
-    ...    od výběru genderu, vyplnění jména, adresy až po odeslání registračního formuláře.
-    Klikne Na regiter tlacitko
-    Vybere náhodný gender chekckbox
-    ${křestní_pro_ověření}=    Vyplní Křestní Jméno
-    ${příjmení_pro_ověření}=    Vyplní Příjmení
-    ${email_pro_ověření}=    Vyplní Email
-    ${heslo_pro_ověření}=    Vyplní Heslo
-    ${datum_narození_pro_ověření}=    Vyplní Datum Narození
-    Zaškrtne Opt-in pro speciální nabídky
-    Zaškrtne GDPR souhlas
-    Zaškrtne Customer Privacy
-    Zaškrtne Newsletter
-    Klikne Na Uložit
-    Ověření úspěšné registrace    ${křestní_pro_ověření} ${příjmení_pro_ověření}
+
+Register New User
+    [Documentation]    Complete workflow for registering a new user, which includes all steps
+    ...    from selecting gender, filling in name, address to submitting the registration form.
+    Click Register Button
+    Select Random Gender Checkbox
+    ${first_name_for_verification}=    Fill First Name
+    ${last_name_for_verification}=    Fill Last Name
+    ${email_for_verification}=    Fill Email
+    ${password_for_verification}=    Fill Password
+    ${birth_date_for_verification}=    Fill Birth Date
+    Check Opt-in For Special Offers
+    Check GDPR Consent
+    Check Customer Privacy
+    Check Newsletter
+    Click Save
+    Verify Successful Registration    ${first_name_for_verification} ${last_name_for_verification}

@@ -1,16 +1,20 @@
 *** Comments ***
+This file contains high-level workflow keywords that combine multiple page keywords
+...    to create complete user journeys for navigation through the e-shop.
 
 *** Settings ***
-Resource    ../common.resource
+Resource    ../../common.resource
 
 *** Keywords ***
 
-Najede Myší Na Clothes v menu & Vybere Ženu
-    [Documentation]    Najede myší na položku "Clothes" v hlavním menu a poté klikne na položku "Women" pro zobrazení kategorie oblečení pro ženy.    
-    Najede Myší Na Clothes v menu
-    Klikne Na Clothes Pro Ženy V Menu
+Hover Over Clothes In Menu And Select Women
+    [Documentation]    Hovers over the "Clothes" item in the main menu and then clicks on the "Women" item
+    ...    to display the women's clothing category.
+    Hover Over Clothes In Menu
+    Click Clothes For Women In Menu
 
-Najede Myší Na Příslušenství v menu & Vybere Stacionerie
-    [Documentation]    Najede myší na položku "Příslušenství" v hlavním menu a poté klikne na položku "Stacionerie" pro zobrazení kategorie stacionerie.    
-    Najede Myší Na Příslušenství v menu
-    Klikne Na Příslušenství Pro Stacionerie V Menu
+Hover Over Accessories In Menu And Select Stationery
+    [Documentation]    Hovers over the "Accessories" item in the main menu and then clicks on the "Stationery" item
+    ...    to display the stationery category.
+    Hover Over Accessories In Menu
+    Click Accessories For Stationery In Menu
