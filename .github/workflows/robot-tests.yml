@@ -42,6 +42,10 @@ jobs:
       - name: Initialize Browser library
         run: rfbrowser init
 
+      # 5b. Install Playwright system dependencies (required for Chromium on Ubuntu)
+      - name: Install Playwright system dependencies
+        run: npx playwright install-deps chromium
+
       # 6. Run Robot Framework tests
       - name: Run Robot Framework tests
         run: robot --outputdir results --variable TEST_URL:${{ env.TEST_URL }} tests/
