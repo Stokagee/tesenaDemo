@@ -1,9 +1,13 @@
+*** Comments ***
+This file contains keywords for working with the Art category page,
+...    which use general keywords from common.resource and specific locators from art_page_locators.resource.
+
 *** Settings ***
-Resource    ../common.resource
+Resource    ../../common.resource
 
 *** Keywords ***
 
-Vybere První Produkt v ART Kategorii
-    [Documentation]    Vybere první produkt v kategorii ART pomocí lokátoru specifického pro tuto kategorii.
-    Log Action    Vyberu první produkt v kategorii ART.
+Select First Product In Art Category
+    [Documentation]    Selects the first product in the ART category using the locator specific to this category.
+    Log Action    Selecting the first product in the ART category.
     Click Element    ${ART_PAGE_FIRST_ITEM_BUTTON}    First Item Button in ART Category

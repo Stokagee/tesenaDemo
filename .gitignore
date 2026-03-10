@@ -7,3 +7,8 @@ tests/browser/screenshot/fail-screenshot-1.png
 tests/report.html
 tests/output.xml
 tests/log.html
+log.html
+output.xml
+report.html
+CHANGELOG.md
+CONTRIBUTING.md

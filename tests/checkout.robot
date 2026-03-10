@@ -1,14 +1,14 @@
 *** Settings ***
-Documentation    Testovací scénář pro ověření funkčnosti procesu nákupu na e-shopu Tesena.cz. 
-    ...          Tento test zahrnuje kompletní workflow pro nákup produktu, včetně přidání produktu do košíku, 
-    ...          vyplnění údajů pro objednávku, sečtení celkového součtu ceny a odeslání objednávky.
+Documentation    Test scenario to verify the functionality of the checkout process for the Tesena e-shop.
+    ...          This test includes the complete workflow for purchasing a product, including adding product to cart,
+    ...          filling in order details, calculating total price, and submitting the order.
 Resource    ../common.resource
 
 Test Setup    Initialize Browser Session
 Test Teardown    Close Browser Session
 
 *** Test Cases ***
-Nákup Produktu Pro Ženy
-    [Documentation]    Tento test ověřuje kompletní proces nákupu produktu pro ženy, včetně přidání produktu do košíku, 
-    ...                vyplnění údajů pro objednávku, sečtení celkového součtu ceny a odeslání objednávky.
-    Najede Myší Na Clothes v menu & Vybere Ženu & Přidá Produkt Do košíku
+Complete Checkout Flow
+    [Documentation]    This test verifies the complete checkout flow including adding multiple products to cart
+    ...                (Women, Stationery, Art), verifying price calculation, filling order forms, and proceeding to payment.
+    Complete Checkout Flow

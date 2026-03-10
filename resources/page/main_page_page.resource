@@ -1,46 +1,47 @@
 *** Comments ***
-Tady se nacházejí základní keywords pro práci s hlavní stránkou, 
-...    které využívají obecné keywords z common.resource a specifické lokátory z main_page_locators.resource.
+This file contains basic keywords for working with the main page,
+...    which use general keywords from common.resource and specific locators from main_page_locators.resource.
+
 *** Settings ***
 Resource    ../../common.resource
 
 
 *** Keywords ***
-Klikne Na regiter tlacitko
-    [Documentation]    Klikne na tlačítko pro registraci na hlavní stránce, které je je na spodu stránky v patičce.
-    Log Action    Klikám na tlačítko pro registraci na hlavní stránce.
+Click Register Button
+    [Documentation]    Clicks on the registration button on the main page, which is located at the bottom of the page in the footer.
+    Log Action    Clicking on registration button on the main page.
     Click Element    ${MAIN_PAGE_REGISTER_BUTTON}    Register Button
 
-Ověření úspěšné registrace
-    [Documentation]    Ověří, že se uživatel úspěšně zaregistroval a je přihlášen, tím že zkontroluje přítomnost tlačítka pro odhlášení.
+Verify Successful Registration
+    [Documentation]    Verifies that the user has successfully registered and is logged in by checking the presence of the sign-out button.
     [Arguments]    ${text}
-    Log Action    Ověřuji úspěšnou registraci, kontroluji přítomnost odhlášení a zobrazení jména uživatele: ${text}
+    Log Action    Verifying successful registration, checking sign-out presence and displayed user name: ${text}
     ${text_for_verify}=    Get Element Text    ${MAIN_PAGE_ACCOUNT_BUTTON}
-    Should Contain   ${text_for_verify}    ${text}    Ověření úspěšné registrace
+    Should Contain   ${text_for_verify}    ${text}    Verification of successful registration
 
-Najede Myší Na Clothes v menu
-    [Documentation]    Najede myší na položku "Clothes" v hlavním menu pro zobrazení podmenu s možností výběru pro muže a ženy.
-    Log Action    Najíždím myší na položku "Clothes" v hlavním menu.
-    Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_DROPDOWN}    Clothes Dropdown Menu
+Hover Over Clothes In Menu
+    [Documentation]    Hovers over the "Clothes" item in the main menu to display the submenu with options for men and women.
+    Log Action    Hovering over "Clothes" item in the main menu.
+    Hover Over Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_DROPDOWN}    Clothes Dropdown Menu
 
-Klikne Na Clothes Pro Ženy V Menu
-    [Documentation]    Klikne na položku "Women" v podmenu "Clothes" pro zobrazení kategorie oblečení pro ženy.
-    Log Action    Klikám na položku "Women" v podmenu "Clothes".
-    Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}    Ověření, že se zobrazila kategorie oblečení pro ženy, tím že zkontroluje přítomnost specifického produktu v této kategorii.
-    Click Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}    kliknutí na kategorii oblečení pro ženy
+Click Clothes For Women In Menu
+    [Documentation]    Clicks on the "Women" item in the "Clothes" submenu to display the women's clothing category.
+    Log Action    Clicking on "Women" item in "Clothes" submenu.
+    Hover Over Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}    Verifying that women's clothing category is displayed by checking for specific product.
+    Click Element    ${MAIN_PAGE_MENU_BAR_CLOTHES_FOR_WOMEN_BUTTON}    Click on women's clothing category
 
-Najede Myší Na Příslušenství v menu
-    [Documentation]    Najede myší na položku "Příslušenství" v hlavním menu pro zobrazení podmenu s možností výběru pro stacionerie a domácí příslušenství.
-    Log Action    Najíždím myší na položku "Příslušenství" v hlavním menu.
-    Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_DROPDOWN}    Příslušenství Dropdown Menu
+Hover Over Accessories In Menu
+    [Documentation]    Hovers over the "Accessories" item in the main menu to display the submenu with options for stationery and home accessories.
+    Log Action    Hovering over "Accessories" item in the main menu.
+    Hover Over Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_DROPDOWN}    Accessories Dropdown Menu
 
-Klikne Na Příslušenství Pro Stacionerie V Menu
-    [Documentation]    Klikne na položku "Stacionerie" v podmenu "Příslušenství" pro zobrazení kategorie stacionerie.
-    Log Action    Klikám na položku "Stacionerie" v podmenu "Příslušenství".
-    Najetí Myši Na Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    Ověření, že se zobrazila kategorie stacionerie, tím že zkontroluje přítomnost specifického produktu v této kategorii.
-    Click Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    kliknutí na kategorii stacionerie    
+Click Accessories For Stationery In Menu
+    [Documentation]    Clicks on the "Stationery" item in the "Accessories" submenu to display the stationery category.
+    Log Action    Clicking on "Stationery" item in "Accessories" submenu.
+    Hover Over Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    Verifying that stationery category is displayed by checking for specific product.
+    Click Element    ${MAIN_PAGE_MENU_BAR_PRISLUSENTSTVI_STACIONERIE_BUTTON}    Click on stationery category
 
-Klikne Na Art V Menu
-    [Documentation]    Klikne na položku "Art" v hlavním menu pro zobrazení kategorie umění.
-    Log Action    Klikám na položku "Art" v hlavním menu.
-    Click Element    ${MAIN_PAGE_MENU_BAR_ART_BUTTON}    kliknutí na kategorii umění
+Click Art In Menu
+    [Documentation]    Clicks on the "Art" item in the main menu to display the art category.
+    Log Action    Clicking on "Art" item in the main menu.
+    Click Element    ${MAIN_PAGE_MENU_BAR_ART_BUTTON}    Click on art category

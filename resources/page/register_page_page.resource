@@ -1,74 +1,75 @@
 *** Comments ***
-Tady se nacházejí základní keywords pro práci s registrační stránkou,
-...    které využívají obecné keywords z common.resource a specifické lokátory z register_page_locators.resource.
+This file contains basic keywords for working with the registration page,
+...    which use general keywords from common.resource and specific locators from register_page_locators.resource.
+
 *** Settings ***
 Resource    ../../common.resource
 
 *** Keywords ***
 
-Vybere náhodný gender chekckbox 
-    [Documentation]    Vybere náhodně jeden z dvou gender checkboxů (Pan nebo Paní) na registrační stránce.
+Select Random Gender Checkbox
+    [Documentation]    Randomly selects one of the two gender checkboxes (Mr or Mrs) on the registration page.
     ${random_checkbox}=    Evaluate    random.choice(@{REGISTER_PAGE_BOTH_GENDER_CHECKBOXES_FOR_RANDOM_CHOICE})    modules=random
-    Log Action    Vyberu checkbox pro gender: ${random_checkbox}
-    Click On Checkbox    ${random_checkbox}    jeden ze dvou gender
+    Log Action    Selecting gender checkbox: ${random_checkbox}
+    Click On Checkbox    ${random_checkbox}    one of two gender checkboxes
     RETURN    ${random_checkbox}
 
-Vyplní Křestní Jméno
-    [Documentation]    Vyplní pole pro křestní jméno na registrační stránce.
+Fill First Name
+    [Documentation]    Fills in the first name field on the registration page.
     ${first_name}=    First Name
-    Log Action   Vyplním křestní jméno: ${first_name}
-    Fill Field    ${REGISTER_PAGE_FIRST_NAME_INPUT}    ${first_name}    Křestní jméno
+    Log Action    Filling first name: ${first_name}
+    Fill Field    ${REGISTER_PAGE_FIRST_NAME_INPUT}    ${first_name}    First Name
     RETURN    ${first_name}
 
-Vyplní Příjmení
-    [Documentation]    Vyplní pole pro příjmení na registrační stránce.
+Fill Last Name
+    [Documentation]    Fills in the last name field on the registration page.
     ${last_name}=    Last Name
-    Log Action   Vyplním příjmení: ${last_name}
-    Fill Field    ${REGISTER_PAGE_LAST_NAME_INPUT}    ${last_name}    Příjmení
+    Log Action    Filling last name: ${last_name}
+    Fill Field    ${REGISTER_PAGE_LAST_NAME_INPUT}    ${last_name}    Last Name
     RETURN    ${last_name}
 
-Vyplní Email
-    [Documentation]    Vyplní pole pro email na registrační stránce.
+Fill Email
+    [Documentation]    Fills in the email field on the registration page.
     ${email}=    Email
-    Log Action   Vyplním email: ${email}
+    Log Action    Filling email: ${email}
     Fill Field    ${REGISTER_PAGE_EMAIL_INPUT}    ${email}    Email
     RETURN    ${email}
 
-Vyplní Heslo
-    [Documentation]    Vyplní pole pro heslo na registrační stránce.
+Fill Password
+    [Documentation]    Fills in the password field on the registration page.
     ${password}=    Password    length=12    special_chars=1    digits=1    upper_case=1    lower_case=1
-    Log Action   Vyplním heslo: ${password}
-    Fill Field    ${REGISTER_PAGE_PASSWORD_INPUT}    ${password}    Heslo
+    Log Action    Filling password: ${password}
+    Fill Field    ${REGISTER_PAGE_PASSWORD_INPUT}    ${password}    Password
     RETURN    ${password}
 
-Vyplní Datum Narození
-    [Documentation]    Vyplní pole pro datum narození na registrační stránce.
+Fill Birth Date
+    [Documentation]    Fills in the birth date field on the registration page.
     ${birthday}=    Get Current Date    result_format=%d.%m.%Y   increment=-3650
-    Log Action   Vyplním datum narození: ${birthday}
-    Fill Field    ${REGISTER_PAGE_BIRTHDAY_INPUT}    ${birthday}    Datum narození
+    Log Action    Filling birth date: ${birthday}
+    Fill Field    ${REGISTER_PAGE_BIRTHDAY_INPUT}    ${birthday}    Birth Date
     RETURN    ${birthday}
 
-Zaškrtne Opt-in pro speciální nabídky
-    [Documentation]    Zaškrtne opt-in checkbox pro speciální nabídky od partner
-    Log Action    Zaškrtávám opt-in checkbox pro speciální nabídky
-    Click On Checkbox    ${REGISTER_PAGE_OPTIN_CHECKBOX}    Opt-in pro speciální nabídky
+Check Opt-in For Special Offers
+    [Documentation]    Checks the opt-in checkbox for special offers from partners.
+    Log Action    Checking opt-in checkbox for special offers
+    Click On Checkbox    ${REGISTER_PAGE_OPTIN_CHECKBOX}    Opt-in for special offers
 
-Zaškrtne GDPR souhlas
-    [Documentation]    Zaškrtne GDPR souhlas pro registraci
-    Log Action    Zaškrtávám GDPR souhlas
-    Click On Checkbox    ${REGISTER_PAGE_GDPR_CHECKBOX}    GDPR souhlas
+Check GDPR Consent
+    [Documentation]    Checks the GDPR consent checkbox for registration.
+    Log Action    Checking GDPR consent checkbox
+    Click On Checkbox    ${REGISTER_PAGE_GDPR_CHECKBOX}    GDPR consent
 
-Zaškrtne Newsletter
-    [Documentation]    Zaškrtne checkbox pro odběr newsletteru
-    Log Action    Zaškrtávám checkbox pro odběr newsletteru
+Check Newsletter
+    [Documentation]    Checks the newsletter subscription checkbox.
+    Log Action    Checking newsletter subscription checkbox
     Click On Checkbox    ${REGISTER_PAGE_NEWSLETTER_CHECKBOX}    Newsletter
 
-Zaškrtne Customer Privacy
-    [Documentation]    Zaškrtne checkbox pro souhlas s ochranou osobních údajů
-    Log Action    Zaškrtávám checkbox pro souhlas s ochranou osobních údajů
+Check Customer Privacy
+    [Documentation]    Checks the customer privacy consent checkbox.
+    Log Action    Checking customer privacy consent checkbox
     Click On Checkbox    ${REGISTER_PAGE_CUSTOMER_PRIVACY_CHECKBOX}    Customer Privacy
 
-Klikne Na Uložit
-    [Documentation]    Klikne na tlačítko pro uložení registrace a tím dokončení procesu registrace.
-    Log Action    Klikám na tlačítko Uložit registraci
-    Click Element    ${REGISTER_PAGE_SAVE_BUTTON}    Uložit registraci
+Click Save
+    [Documentation]    Clicks the save button to complete the registration process.
+    Log Action    Clicking Save registration button
+    Click Element    ${REGISTER_PAGE_SAVE_BUTTON}    Save registration

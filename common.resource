@@ -1,6 +1,6 @@
 *** Comments ***
-Zde je soubour který zastřešuje jako deštník celý projekt. Obsahuje obecné keywords pro práci s prohlížečem, 
-...    které jsou využívány napříč všemi stránkami.
+This is the main resource file that serves as an umbrella for the entire project.
+...    It contains general keywords for browser operations that are used across all pages.
 
 *** Settings ***
 Library    Browser
@@ -52,14 +52,14 @@ Wait Element Ready
 # === CORE KEYWORDS ===
 
 Initialize Browser Session
-    [Documentation]    Otevře se nové okno a načte se zadaná URL adresa.
+    [Documentation]    Opens a new browser window and navigates to the specified URL.
     New Browser    headless=${HEADLESS}   browser=chromium
     New Context
     New Page    url=${TEST_URL}    wait_until=networkidle    
     Set Viewport Size    width=1280    height=800
 
 Close Browser Session
-    [Documentation]    Zavře se aktuální okno prohlížeče.
+    [Documentation]    Closes the current browser window.
     Close Browser
 
 Click Element
@@ -70,7 +70,7 @@ Click Element
         Click    ${selector}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Nepodařilo se kliknout na prvek, '${context_name}' --> | selector='${selector}' | ERROR: ${err}
+        VAR    ${msg}    Failed to click element, '${context_name}' --> | selector='${selector}' | ERROR: ${err}
         Fail    ${msg}
     END
 
@@ -84,7 +84,7 @@ Fill Field
         Fill Text    ${locator}    ${text}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Nepodařilo se vyplnit pole, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        VAR    ${msg}    Failed to fill field, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
         Fail    ${msg}
     END
 
@@ -97,7 +97,7 @@ Get Element Text
         ${text}=    browser.Get Text    ${locator}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Nepodařilo se získat text elementu, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        VAR    ${msg}    Failed to get element text, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
         Fail    ${msg}
     END
     RETURN    ${text}
@@ -110,11 +110,11 @@ Click On Checkbox
         Check Checkbox   ${locator}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Nepodařilo se zaškrtnout checkbox, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        VAR    ${msg}    Failed to check checkbox, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
         Fail    ${msg}
     END    
 
-Najetí Myši Na Element
+Hover Over Element
     [Documentation]    Hovers the mouse over the specified element using the given locator with optional context name for better error messages
     [Arguments]    ${locator}    ${context_name}=${EMPTY}
     TRY
@@ -122,7 +122,7 @@ Najetí Myši Na Element
         Hover   ${locator}
     EXCEPT    AS    ${err}
         Take Screenshot
-        VAR    ${msg}    Nepodařilo se najet myší na element, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
+        VAR    ${msg}    Failed to hover over element, '${context_name}' --> | locator='${locator}' | ERROR: ${err}
         Fail    ${msg}
     END
 
@@ -165,18 +165,18 @@ Log Action
 
 # === Global Keywords ===
 
-Přidat Produkt Do Košíku
-    [Documentation]    Přidá produkt do košíku pomocí globálního lokátoru pro tlačítko "Přidat do košíku".
-    Log Action    Klikám na tlačítko "Přidat do košíku" pro produkt.
+Add Product To Cart
+    [Documentation]    Adds product to cart using the global locator for the "Add to cart" button.
+    Log Action    Clicking on "Add to cart" button for the product.
     Click Element    ${GLOBAL_ADD_TO_CART_BUTTON}    Add To Cart Button
 
-Zavřít Modal Okno Po Přidání Do Košíku
-    [Documentation]    Zavře modal okno, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro tlačítko zavření.
-    Log Action    Zavírám modal okno po přidání produktu do košíku.
+Close Modal After Adding To Cart
+    [Documentation]    Closes the modal window that appears after adding a product to the cart, using the global locator for the close button.
+    Log Action    Closing modal window after adding product to cart.
     Click Element    ${GLOBAL_CLOSE_MODAL_BUTTON}    Close Modal Button
 
-Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
-    [Documentation]    Klikne na tlačítko "Přejít do košíku" v modal okně, které se objeví po přidání produktu do košíku, pomocí globálního lokátoru pro toto tlačítko.
-    Log Action    Klikám na tlačítko "Přejít do košíku" v modal okně po přidání produktu do košíku.
+Click Go To Cart In Modal
+    [Documentation]    Clicks on the "Go to cart" button in the modal window that appears after adding a product to the cart, using the global locator for this button.
+    Log Action    Clicking on "Go to cart" button in modal after adding product to cart.
     Click Element    ${GLOBAL_MODAL_GO_TO_CART_BUTTON}    Go To Cart Button
 

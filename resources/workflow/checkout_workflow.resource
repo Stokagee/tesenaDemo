@@ -1,76 +1,67 @@
+*** Comments ***
+This file contains high-level workflow keywords for the complete checkout process,
+...    including product selection, cart management, form filling, and order completion.
+
 *** Settings ***
-Resource    ../common.resource
+Resource    ../../common.resource
 
 *** Keywords ***
-Najede Myší Na Clothes v menu & Vybere Ženu & Přidá Produkt Do košíku
-    [Documentation]    Najede myší na položku "Clothes" v hlavním menu, vybere kategorii 
-    ...    pro ženy a přidá první produkt do košíku.
-    Najede Myší Na Clothes v menu & Vybere Ženu
-    Výběr První Položky V Kategorii Pro Ženy
-    Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
-    Přidat Produkt Do Košíku
-    Zavřít Modal Okno Po Přidání Do Košíku
-    Najede Myší Na Příslušenství v menu & Vybere Stacionerie
-    Vybere První Notebook V Kategorii Stacionerie
-    Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
-    Přidat Produkt Do Košíku
-    Zavřít Modal Okno Po Přidání Do Košíku
-    Klikne Na Art V Menu
-    Vybere První Produkt v ART Kategorii
-    Sleep    2    # Nucený sleep. Když není, tak při kliknutí na přidat produkt, se objevím v košíku s textem "....žádne další položky"
-    Přidat Produkt Do Košíku
-    Klikne Na Přejít Do Košíku V Modal Okně Po Přidání Do Košíku
+
+Complete Checkout Flow
+    [Documentation]    Complete checkout flow including: adding 3 products (Women, Stationery, Art),
+    ...    verifying price calculation, filling order forms, and proceeding to payment.
+    Hover Over Clothes In Menu And Select Women
+    Select First Item In Women Category
+    Sleep    2    # Forced sleep. Without it, when clicking add product, cart appears with text "...no additional items"
+    Add Product To Cart
+    Close Modal After Adding To Cart
+    Hover Over Accessories In Menu And Select Stationery
+    Select First Notebook In Stationery Category
+    Sleep    2    # Forced sleep. Without it, when clicking add product, cart appears with text "...no additional items"
+    Add Product To Cart
+    Close Modal After Adding To Cart
+    Click Art In Menu
+    Select First Product In Art Category
+    Sleep    2    # Forced sleep. Without it, when clicking add product, cart appears with text "...no additional items"
+    Add Product To Cart
+    Click Go To Cart In Modal
     ${item_prices}    ${total_sum}    Get Cart Item Prices And Sum
-    Log Action    Získal jsem ceny položek v košíku: ${item_prices} a jejich součet: ${total_sum}. Nyní ověřuji, že tento součet odpovídá zobrazenému mezisoučtu produktů v košíku pro ověření správného výpočtu celkové ceny.
+    Log Action    Retrieved item prices in cart: ${item_prices} and their sum: ${total_sum}. Now verifying that this sum matches the displayed product subtotal to verify correct total price calculation.
     ${subtotal_price}=    Get Cart Subtotal Products
-    Log Action    Ověřuji, že součet cen položek v košíku (${total_sum}) odpovídá zobrazenému mezisoučtu produktů (${subtotal_price}) pro ověření správného výpočtu celkové ceny v košíku.
-    Should Be Equal As Numbers    ${total_sum}    ${subtotal_price}    msg=Ověření správného výpočtu celkové ceny v košíku selhalo. Očekávaná cena: ${subtotal_price}, Získaná cena: ${total_sum}
-    Klikne Na Pokračovat Do Poklady V Košíku
-    Vyplní Údaje Pro Objednávku
-    Vyplní Formulář Adresy v košíku
-    Vybere Možnost Zvolit Mého Dopravce
-    Klikne Na Pokračovat Po Vybrání Dopravce v Košíku
-    Ověření Zvoleného Dopravce a Přechod Na stránku S Výběrem Platby v Košíku
+    Log Action    Verifying that the sum of item prices in cart (${total_sum}) matches the displayed product subtotal (${subtotal_price}) to verify correct total price calculation in cart.
+    Should Be Equal As Numbers    ${total_sum}    ${subtotal_price}    msg=Verification of correct total price calculation in cart failed. Expected price: ${subtotal_price}, Got price: ${total_sum}
+    Click Continue To Checkout In Cart
+    Fill Order Details
+    Fill Address Form In Cart
+    Click Continue To Payment Step
+    Verify Payment Step Is Displayed
 
 
-Vyplní Údaje Pro Objednávku
-    [Documentation]    Vyplní všechny potřebné údaje pro objednávku, včetně jména, příjmení, emailu, telefonního čísla, adresy a dalších informací potřebných pro dokončení nákupu.
-    Vybere náhodný gender chekckbox
-    ${křestní_pro_ověření}=    Vyplní Jméno v Košíku
-    ${příjmení_pro_ověření}=    Vyplní Příjmení v Košíku
-    ${email_pro_ověření}=    Vyplní Email v Košíku
-    ${heslo_pro_ověření}=    Vyplní Heslo v Košíku
-    ${datum_narození_pro_ověření}=    Vyplní Datum Narození v Košíku
-    Zaškrtne Opt-in pro speciální nabídky v Košíku
-    Zaškrtne GDPR souhlas v Košíku
-    Zaškrtne Customer Privacy v Košíku
-    Zaškrtne Newsletter v Košíku
-    Klikne Na Pokračovat Po Vyplnění Formuláře V Košíku
+Fill Order Details
+    [Documentation]    Fills in all required details for the order, including first name, last name, email, phone number,
+    ...    address, and other information needed to complete the purchase.
+    Select Random Gender Checkbox
+    ${first_name_for_verification}=    Fill First Name In Cart
+    ${last_name_for_verification}=    Fill Last Name In Cart
+    ${email_for_verification}=    Fill Email In Cart
+    ${password_for_verification}=    Fill Password In Cart
+    ${birth_date_for_verification}=    Fill Birth Date In Cart
+    Check Opt-in For Special Offers In Cart
+    Check GDPR Consent In Cart
+    Check Customer Privacy In Cart
+    Check Newsletter In Cart
+    Click Continue After Filling Form In Cart
 
 
-Vyplní Formulář Adresy v košíku
-    [Documentation]    Vyplní všechny potřebné údaje pro adresu v košíku, včetně ulice, města, PSČ a dalších informací potřebných pro dokončení nákupu.
-    Vyplní Alias v Košíku
-    Vyplní Společnost v Košíku
-    Vyplní DIČ v Košíku
-    Vyplní Adresu v Košíku
-    Vyplní Doplněk Adresy v Košíku
-    Vyplní PSČ v Košíku
-    Vyplní Město v Košíku
-    Vyplní Telefon v Košíku
-    Klikne Na Pokračovat Po Vyplnění Adressy V Košíku
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    Sleep    3
+Fill Address Form In Cart
+    [Documentation]    Fills in all required address details in the cart, including street, city, postal code,
+    ...    and other information needed to complete the purchase.
+    Fill Alias In Cart
+    Fill Company In Cart
+    Fill VAT Number In Cart
+    Fill Address In Cart
+    Fill Address Complement In Cart
+    Fill Zip Code In Cart
+    Fill City In Cart
+    Fill Phone In Cart
+    Click Continue After Filling Address In Cart
