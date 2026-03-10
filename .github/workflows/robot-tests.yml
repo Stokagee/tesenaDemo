@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  # Test URL - can be overridden by repository secrets
+  # To set a secret: GitHub repo → Settings → Secrets and variables → Actions → New repository secret
+  # Add secret named TEST_URL with your target URL (e.g., https://example.com)
+  TEST_URL: ${{ secrets.TEST_URL || 'https://demo.prestashop.com' }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -38,7 +44,7 @@ jobs:
 
       # 6. Run Robot Framework tests
       - name: Run Robot Framework tests
-        run: robot --outputdir results tests/
+        run: robot --outputdir results --variable TEST_URL:${{ env.TEST_URL }} tests/
 
       # 7. Upload test artifacts (always, even on failure)
       - name: Upload test artifacts
