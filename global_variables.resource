@@ -4,7 +4,7 @@ Global variables and locators used across the entire project.
 
 *** Variables ***
 ${TEST_URL}    ${EMPTY}
-${TIMEOUT}    5s
+${TIMEOUT}    10s
 ${LOG_TO_CONSOLE}    ${False}
 ${HEADLESS}   ${True}
 

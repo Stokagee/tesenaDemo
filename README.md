@@ -111,7 +111,7 @@ robot --dryrun tests/
 | `TEST_URL` | `www.example.com` | Target URL |
 | `HEADLESS` | `False` | Browser headless mode |
 | `TIMEOUT` | `5s` | Default timeout |
-| `LOG_TO_CONSOLE` | `True` | Console logging |
+| `LOG_TO_CONSOLE` | `False` | Console logging |
 
 ## Naming Conventions
 
